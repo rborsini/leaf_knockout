@@ -23,6 +23,15 @@ namespace Leaf.Knockout
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // knockout
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                      "~/Scripts/knockout-3.3.0.js",
+                      "~/Scripts/knockout.mapping-latest.js"));
+
+            // overview page
+            bundles.Add(new ScriptBundle("~/bundles/overview").Include(
+                      "~/Scripts/overview.js"));
         }
     }
 }
