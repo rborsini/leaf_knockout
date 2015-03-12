@@ -20,9 +20,15 @@ namespace Leaf.Knockout.Controllers
         }
 
         // GET api/monitorapi/5
-        public string Get(int id)
+        public DetailsViewModel Get(int id)
         {
-            return "value";
+            return new DetailsViewModel()
+            {
+                Id = id,
+                Name = "Plant " + id.ToString(),
+                Power = new Random().Next(100),
+                Energy = new Random().Next(100000)
+            };
         }
 
         // POST api/monitorapi

@@ -38,5 +38,14 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+            @RenderSection("ready", required:false)
+        });
+
+    </script>
+
 </body>
 </html>

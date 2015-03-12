@@ -14,5 +14,11 @@ namespace Leaf.Knockout.Controllers
         {
             return View();
         }
+
+        public ActionResult Details()
+        {
+            return View();
+        }
+
 	}
 }
