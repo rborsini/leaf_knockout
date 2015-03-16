@@ -5,7 +5,6 @@
     $('#wiew-toggle').on('click', function () {
 
         viewModel.viewType(viewModel.viewType() == 'list-item' ? 'grid-item' : 'list-item');
-        console.log(viewModel.viewType());
     });
 
     return {

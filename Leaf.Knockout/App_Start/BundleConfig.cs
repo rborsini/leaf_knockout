@@ -29,6 +29,10 @@ namespace Leaf.Knockout
                       "~/Scripts/knockout-3.3.0.js",
                       "~/Scripts/knockout.mapping-latest.js"));
 
+            // knockout
+            bundles.Add(new ScriptBundle("~/bundles/knockout_components").Include(
+                      "~/Scripts/ko.components.js"));
+
             // overview page
             bundles.Add(new ScriptBundle("~/bundles/overview").Include(
                       "~/Scripts/overview.js"));
