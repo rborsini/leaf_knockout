@@ -1,10 +1,12 @@
 ﻿var details = function () {
 
     var viewModel = null;
+    var chart = null;
 
     return {
         init: function (url, divId) {
 
+            chart = initHighcharts();
             ajaxRequest(url, divId);
 
             setInterval(function () {
@@ -24,6 +26,8 @@
 
                 console.log("result", result);
 
+                chart.series[0].setData(result.YValues);
+
                 if (viewModel == null) {
                     viewModel = ko.mapping.fromJS(result);
                     ko.applyBindings(viewModel, $(divId).get(0));
@@ -31,41 +35,26 @@
                     ko.mapping.fromJS(result, viewModel);
                 }
 
-                $('#chart').highcharts({
-                    title: {
-                        text: 'Monthly Values',
-                        x: -20 //center
-                    },
-                    xAxis: {
-                        categories: result.XValues
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Energy (kWh)'
-                        },
-                        plotLines: [{
-                            value: 0,
-                            width: 1,
-                            color: '#808080'
-                        }]
-                    },
-                    tooltip: {
-                        valueSuffix: 'kWh'
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'middle',
-                        borderWidth: 0
-                    },
-                    series: [{
-                        name: result.Name,
-                        data: result.YValues
-                    }]
+
+                viewModel.YValues.subscribe(function (newValues) {
+                    chart.series[0].setData(newValues);
                 });
 
             }
         });
     }
+
+    function initHighcharts() {
+        
+        return new Highcharts.Chart({
+            chart: {
+                renderTo: 'chart'
+            },
+            series: [{
+                data: {}
+            }]
+        })
+
+    };
 
 }();
