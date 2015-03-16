@@ -2,6 +2,12 @@
 
     var viewModel = null;
 
+    $('#wiew-toggle').on('click', function () {
+
+        viewModel.viewType(viewModel.viewType() == 'list-item' ? 'grid-item' : 'list-item');
+        console.log(viewModel.viewType());
+    });
+
     return {
         init: function (url, divId) {
             ajaxRequest(url, divId);
@@ -26,6 +32,7 @@
 
                 if (viewModel == null) {
                     viewModel = ko.mapping.fromJS(js);
+                    viewModel.viewType = ko.observable('list-item');
                     ko.applyBindings(viewModel, $(divId).get(0));
                 } else {
                     ko.mapping.fromJS(js, viewModel);
