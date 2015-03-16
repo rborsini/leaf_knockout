@@ -22,12 +22,20 @@ namespace Leaf.Knockout.Controllers
         // GET api/monitorapi/5
         public DetailsViewModel Get(int id)
         {
+            List<Value> values = new List<Value>();
+            Random r = new Random(DateTime.Now.Millisecond);
+            for (var i = 0; i < 31; i++)
+            {
+                values.Add(new Value() { X = i, Y = r.Next(100) });
+            }
+
             return new DetailsViewModel()
             {
                 Id = id,
                 Name = "Plant " + id.ToString(),
                 Power = new Random().Next(100),
-                Energy = new Random().Next(100000)
+                Energy = new Random().Next(100000),
+                Values = values
             };
         }
 

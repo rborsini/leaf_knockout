@@ -14,9 +14,14 @@
     <p><b>Energy: </b><span data-bind="text: Energy"></span></p>
 </div>
 
+<div id="chart" style="min-width:310px; height:400px; margin:0 auto" >
+
+</div>
+
 @section scripts
 {
       @Scripts.Render("~/bundles/knockout")
+      @Scripts.Render("~/bundles/highcharts")   
       @Scripts.Render("~/bundles/details")
 }
 
