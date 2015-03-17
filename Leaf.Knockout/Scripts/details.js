@@ -2,19 +2,36 @@
 
     var viewModel = null;
     var chart = null;
+    var emptyModel = {
+        Name: '-',
+        Power: '-',
+        Energy: '-',
+        YValues: new Array()
+    };
 
     return {
         init: function (url, divId) {
 
             chart = initHighcharts();
+            viewModel = ko.mapping.fromJS(emptyModel);
+
+            viewModel.YValues.subscribe(refreshChart, null, 'change');
+
+            ko.applyBindings(viewModel, $(divId).get(0));
+
             ajaxRequest(url, divId);
 
             setInterval(function () {
                 ajaxRequest(url, divId);
-            }, 3000);
+            }, 3013);
 
         }
     };
+
+    function refreshChart(newValues) {
+        console.log("change");
+        chart.series[0].setData(newValues);
+    }
 
     function ajaxRequest(url, divId) {
 
@@ -23,23 +40,7 @@
             url: url,
             dataType: 'json',
             success: function (result) {
-
-                console.log("result", result);
-
-                chart.series[0].setData(result.YValues);
-
-                if (viewModel == null) {
-                    viewModel = ko.mapping.fromJS(result);
-                    ko.applyBindings(viewModel, $(divId).get(0));
-                } else {
-                    ko.mapping.fromJS(result, viewModel);
-                }
-
-
-                viewModel.YValues.subscribe(function (newValues) {
-                    chart.series[0].setData(newValues);
-                });
-
+                ko.mapping.fromJS(result, viewModel);
             }
         });
     }
