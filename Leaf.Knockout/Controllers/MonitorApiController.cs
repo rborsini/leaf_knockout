@@ -13,17 +13,12 @@ namespace Leaf.Knockout.Controllers
     {
         // GET api/monitorapi
         [Route("api/monitorapi"), HttpGet]
-        public IEnumerable<OverviewViewModel> Index([FromUri] int length = 5)
+        public IEnumerable<OverviewViewModel> Index([FromUri] int elements = 5)
         {
-           return Builder<OverviewViewModel>.CreateListOfSize(length)
-                .TheFirst(length).With(o => o.Type = "Photovoltaic")
-                .TheLast(length / 2).With(o => o.Type = "Hydroelectric")
+            return Builder<OverviewViewModel>.CreateListOfSize(elements)
+                .TheFirst(elements).With(o => o.Type = "Photovoltaic")
+                .TheLast(elements / 2).With(o => o.Type = "Hydroelectric")
                 .Build();
-            
-            //return new OverviewViewModel[] { 
-            //    new OverviewViewModel() { Id= 1, Name = "Plant_1", Type = "Photovoltaic" }, 
-            //    new OverviewViewModel() { Id= 2, Name = "Plant_2", Type = "Hydroelectric" }
-            //};
         }
 
         // GET api/monitorapi/5

@@ -9,6 +9,7 @@
 
     return {
         init: function (url, divId) {
+            url = url + window.location.search;
             ajaxRequest(url, divId);
         }
     };
