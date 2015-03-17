@@ -27,11 +27,20 @@
                     js.plants[i].link = '/Monitor/Details?id=' + js.plants[i].Id;
                 }
 
-                console.log("plants", js);
-
                 if (viewModel == null) {
                     viewModel = ko.mapping.fromJS(js);
                     viewModel.viewType = ko.observable('list-item');
+                    viewModel.searchField = ko.observable('');
+
+                    viewModel.filteredElements = ko.computed(function () {
+                        return ko.utils.arrayFilter(viewModel.plants(), function (rec) {
+                            return (
+                                      (viewModel.searchField().length == 0 || rec.Name().toLowerCase().indexOf(viewModel.searchField().toLowerCase()) > -1)
+                                   )
+                        });
+                    });
+
+
                     ko.applyBindings(viewModel, $(divId).get(0));
                 } else {
                     ko.mapping.fromJS(js, viewModel);

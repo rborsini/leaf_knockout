@@ -1,4 +1,5 @@
-﻿using Leaf.Knockout.Models;
+﻿using FizzWare.NBuilder;
+using Leaf.Knockout.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,22 @@ namespace Leaf.Knockout.Controllers
     public class MonitorApiController : ApiController
     {
         // GET api/monitorapi
-        public IEnumerable<OverviewViewModel> Get()
+        [Route("api/monitorapi"), HttpGet]
+        public IEnumerable<OverviewViewModel> Index([FromUri] int length = 5)
         {
-            return new OverviewViewModel[] { 
-                new OverviewViewModel() { Id= 1, Name = "Plant_1", Type = "Photovoltaic" }, 
-                new OverviewViewModel() { Id= 2, Name = "Plant_2", Type = "Hydroelectric" }
-            };
+           return Builder<OverviewViewModel>.CreateListOfSize(length)
+                .TheFirst(length).With(o => o.Type = "Photovoltaic")
+                .TheLast(length / 2).With(o => o.Type = "Hydroelectric")
+                .Build();
+            
+            //return new OverviewViewModel[] { 
+            //    new OverviewViewModel() { Id= 1, Name = "Plant_1", Type = "Photovoltaic" }, 
+            //    new OverviewViewModel() { Id= 2, Name = "Plant_2", Type = "Hydroelectric" }
+            //};
         }
 
         // GET api/monitorapi/5
+        [Route("api/monitorapi/{id}")]
         public DetailsViewModel Get(int id)
         {
             List<Value> values = new List<Value>();
