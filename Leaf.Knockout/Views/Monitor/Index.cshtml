@@ -7,6 +7,15 @@
 
 <h2>Index</h2>
 
+<div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+        <input type="checkbox" class="search-toggle" autocomplete="off" > Photovoltaic
+    </label>
+    <label class="btn btn-primary">
+        <input type="checkbox" class="search-toggle" autocomplete="off"> Hydroelectric
+    </label>
+</div>
+
 <div id="knockout-container">
     <input type="button" name="wiew-toggle" id="wiew-toggle" value="Toggle Grid" />
     <input type="text" data-bind="value: searchField, valueUpdate: 'afterkeydown'" />
@@ -21,16 +30,19 @@
 
 <script type="text/html" id="list-item">
     <li>
-        <a data-bind="attr: { href: link }"><span data-bind="text: Name"></span></a>
+        <a data-bind="attr: { href: link }">
+            <span data-bind="text: Name"></span>
+        </a>
         (<span class="text-danger" data-bind="text: Type"></span>)
     </li>
 </script>
 
 <script type="text/html" id="grid-item">
     griglia
-    <a data-bind="attr: { href: link }"><span data-bind="text: Name"></span></a>
-    (
-    <span class="text-danger" data-bind="text: Type"></span>)
+    <a data-bind="attr: { href: link }">
+        <span data-bind="text: Name"></span>
+    </a>
+    (<span class="text-danger" data-bind="text: Type"></span>)
 </script>
 @section scripts
 {

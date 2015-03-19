@@ -25,11 +25,11 @@ namespace Leaf.Knockout.Controllers
         [Route("api/monitorapi/{id}")]
         public DetailsViewModel Get(int id)
         {
-            List<Value> values = new List<Value>();
+            List<decimal> values = new List<decimal>();
             Random r = new Random(DateTime.Now.Millisecond);
             for (var i = 0; i < 31; i++)
             {
-                values.Add(new Value() { X = i, Y = r.Next(100) });
+                values.Add(r.Next(100));
             }
 
             return new DetailsViewModel()
@@ -42,19 +42,5 @@ namespace Leaf.Knockout.Controllers
             };
         }
 
-        // POST api/monitorapi
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/monitorapi/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/monitorapi/5
-        public void Delete(int id)
-        {
-        }
     }
 }
