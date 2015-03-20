@@ -44,6 +44,10 @@ namespace Leaf.Knockout
             // details page
             bundles.Add(new ScriptBundle("~/bundles/details").Include(
                       "~/Scripts/details.js"));
+
+            // gettingStarted page
+            bundles.Add(new ScriptBundle("~/bundles/gettingStarted").Include(
+                      "~/Scripts/gettingStarted.js"));
         }
     }
 }

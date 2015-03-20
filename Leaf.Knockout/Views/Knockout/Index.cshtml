@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Konckout - Getting started</h2>
+
+
+<h3>One way binding</h3>
+
+<div id="step_1" class="row">
+
+    <div class="col-xs-4">
+        <label>First Name:</label><span data-bind="text: firstName"></span>
+    </div>
+
+    <div class="col-xs-4">
+        <label>Last Name:</label><span data-bind="text: lastName"></span>
+    </div>
+
+    <div class="col-xs-4">
+        <label>Age:</label><span data-bind="text: age"></span>
+    </div>
+</div>
+
+
+<h3>Two way binding</h3>
+
+<div id="step_2">
+
+    <div class="row">
+        <div class="col-xs-4">
+            <label>First Name:</label><input type="text" data-bind="value: firstName" />
+        </div>
+
+        <div class="col-xs-4">
+            <label>Last Name:</label><input type="text" data-bind="value: lastName, valueUpdate: 'afterkeydown'" />
+        </div>
+
+        <div class="col-xs-4">
+            <label>Age:</label><input type="text" data-bind="value: age, valueUpdate: 'afterkeydown'" />
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <label>First Name:</label><span data-bind="text: firstName"></span>
+        </div>
+
+        <div class="col-xs-4">
+            <label>Last Name:</label><span data-bind="text: lastName"></span>
+        </div>
+
+        <div class="col-xs-4">
+            <label>Age:</label><span data-bind="text: age"></span>
+        </div>
+
+    </div>
+</div>
+
+<h3>ko.observableArray() / foreach</h3>
+
+<div id="step_3" class="row">
+
+    <table class="col-xs-12" >
+        <thead>
+            <tr><th>First name</th><th>Last name</th></tr>
+        </thead>
+        <tbody data-bind="foreach: people">
+            <tr>
+                <td data-bind="text: firstName"></td>
+                <td data-bind="text: lastName"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/gettingStarted")
+}
+
+@section ready
+{
+    step_1();
+    step_2();
+    step_3();
+}
