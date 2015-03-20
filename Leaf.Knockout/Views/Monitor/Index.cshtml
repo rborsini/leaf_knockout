@@ -5,7 +5,7 @@
 
 
 
-<h2>Index</h2>
+<h2>Plants</h2>
 
 <div id="knockout-container">
     
@@ -18,10 +18,10 @@
         <input type="button" class="pull-right margin-left-20" name="wiew-toggle" id="wiew-toggle" value="Toggle Grid" />   
 
         <div class="btn-group pull-right" data-toggle="buttons">
-            <label class="btn btn-primary">
+            <label id="photovoltaic_type" class="btn btn-primary" data-bind="click: pvClick">
                 <input type="checkbox" class="search-toggle" autocomplete="off"> Photovoltaic
             </label>
-            <label class="btn btn-primary">
+            <label id="hydroelectric_type" class="btn btn-primary" data-bind="click: hydroClick">
                 <input type="checkbox" class="search-toggle" autocomplete="off"> Hydroelectric
             </label>
         </div>
