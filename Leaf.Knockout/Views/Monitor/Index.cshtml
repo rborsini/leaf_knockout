@@ -8,14 +8,14 @@
 <h2>Plants</h2>
 
 <div id="knockout-container">
-    
+
     <!-- Search row -->
     <div class="row">
 
         Search:
         <input type="text" data-bind="value: searchField, valueUpdate: 'afterkeydown'" />
 
-        <input type="button" class="pull-right margin-left-20" name="wiew-toggle" id="wiew-toggle" value="Toggle Grid" />   
+        <input type="button" class="pull-right margin-left-20" name="wiew-toggle" id="wiew-toggle" value="Toggle Grid" />
 
         <div class="btn-group pull-right" data-toggle="buttons">
             <label id="photovoltaic_type" class="btn btn-primary" data-bind="click: pvClick">
@@ -26,36 +26,53 @@
             </label>
         </div>
 
-             
+
 
     </div>
 
     <div class="row padding-top-30 ">
-        <ul class="col-xs-9 col-xs-offset-2 padding-top-15 padding-left-20 " data-bind="template: { name: viewType, foreach: filteredElements }"></ul>
+        <div class="col-xs-12 padding-top-15" data-bind="template: { name: viewType, data: filteredElements }"></div>
         @*components test*@
         @*<ul data-bind="foreach: plants">
-            <grid-item params="value: $data"></grid-item>
-        </ul>*@
+                <grid-item params="value: $data"></grid-item>
+            </ul>*@
     </div>
 
 </div>
 
 <script type="text/html" id="list-item">
-    <li>
-        <a data-bind="attr: { href: link }">
-            <span data-bind="text: Name"></span>
-        </a>
-        (<span class="text-danger" data-bind="text: Type"></span>)
-    </li>
+    <div data-bind="foreach: $data">
+        <div class="media">
+            <div class="media-left">
+                <a data-bind="attr: { href: link }">
+                    <div><span data-bind="css: typeClass" class="glyphicon" aria-hidden="true"></span></div>
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading" data-bind="text: Name"></h4>
+                (<span class="text-danger" data-bind="text: Type"></span>)
+            </div>
+        </div>
+    </div>
 </script>
 
 <script type="text/html" id="grid-item">
-    griglia
-    <a data-bind="attr: { href: link }">
-        <span data-bind="text: Name"></span>
-    </a>
-    (
-    <span class="text-danger" data-bind="text: Type"></span>)
+    <div class="row" data-bind="foreach: $data">
+        <a data-bind="attr: { href: link }">
+            <div class="col-md-4 col-sm-12">
+                <div class=" panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span data-bind="text: Name"></span> (<span class="text-danger" data-bind="text: Type"></span>)
+                        </h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 data-bind="css: typeClass" class="glyphicon" aria-hidden="true"></h1>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
 </script>
 @section scripts
 {

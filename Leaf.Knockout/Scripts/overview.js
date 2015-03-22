@@ -30,6 +30,7 @@
 
                 for (var i = 0; i < js.plants.length; i++) {
                     js.plants[i].link = '/Monitor/Details?id=' + js.plants[i].Id;
+                    js.plants[i].typeClass = js.plants[i].Type == 'Photovoltaic' ? 'glyphicon-certificate' : 'glyphicon-tint';
                 }
 
                 // create model from json object
