@@ -37,17 +37,27 @@ namespace Leaf.Knockout
             bundles.Add(new ScriptBundle("~/bundles/knockout_components").Include(
                       "~/Scripts/ko.components.js"));
 
-            // overview page
-            bundles.Add(new ScriptBundle("~/bundles/overview").Include(
-                      "~/Scripts/overview.js"));
-
-            // details page
-            bundles.Add(new ScriptBundle("~/bundles/details").Include(
-                      "~/Scripts/details.js"));
-
             // gettingStarted page
             bundles.Add(new ScriptBundle("~/bundles/gettingStarted").Include(
                       "~/Scripts/gettingStarted.js"));
+
+            // knockout overview page
+            bundles.Add(new ScriptBundle("~/bundles/knockout/overview").Include(
+                      "~/Scripts/knockout/overview.js"));
+
+            // knockout details page
+            bundles.Add(new ScriptBundle("~/bundles/knockout/details").Include(
+                      "~/Scripts/knockout/details.js"));
+
+            // angular overview page
+            bundles.Add(new ScriptBundle("~/bundles/angular/overview").Include(
+                      "~/Scripts/angular/overview.js"));
+
+            // angular details page
+            bundles.Add(new ScriptBundle("~/bundles/angular/details").Include(
+                      "~/Scripts/angular/details.js"));
+
+
         }
     }
 }

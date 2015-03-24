@@ -26,15 +26,15 @@
             dataType: 'json',
             success: function (result) {
 
-                var js = { plants: result };
+                var viewModel = { plants: result };
 
-                for (var i = 0; i < js.plants.length; i++) {
-                    js.plants[i].link = '/Monitor/Details?id=' + js.plants[i].Id;
-                    js.plants[i].typeClass = js.plants[i].Type == 'Photovoltaic' ? 'glyphicon-certificate' : 'glyphicon-tint';
+                for (var i = 0; i < viewModel.plants.length; i++) {
+                    viewModel.plants[i].link = '/Monitor/Details?id=' + viewModel.plants[i].Id;
+                    viewModel.plants[i].typeClass = viewModel.plants[i].Type == 'Photovoltaic' ? 'glyphicon-certificate' : 'glyphicon-tint';
                 }
 
                 // create model from json object
-                viewModel = ko.mapping.fromJS(js);
+                //viewModel = ko.mapping.fromJS(js);
 
                 // init viewType to list mode
                 viewModel.viewType = ko.observable('list-item');
@@ -45,14 +45,14 @@
                 viewModel.hydroType = ko.observable(false);
 
                 viewModel.filteredElements = ko.computed(function () {
-                    return ko.utils.arrayFilter(viewModel.plants(), function (rec) {
+                    return ko.utils.arrayFilter(viewModel.plants, function (rec) {
 
-                        var searchByName = viewModel.searchField().length == 0 || rec.Name().toLowerCase().indexOf(viewModel.searchField().toLowerCase()) > -1;
+                        var searchByName = viewModel.searchField().length == 0 || rec.Name.toLowerCase().indexOf(viewModel.searchField().toLowerCase()) > -1;
 
                         var pv = viewModel.pvType();
                         var hydro = viewModel.hydroType();
 
-                        var searchByType = (!pv && !hydro) || (pv && rec.Type() == 'Photovoltaic') || (hydro && rec.Type() == 'Hydroelectric');
+                        var searchByType = (!pv && !hydro) || (pv && rec.Type == 'Photovoltaic') || (hydro && rec.Type == 'Hydroelectric');
 
                         return searchByName && searchByType;
                     });

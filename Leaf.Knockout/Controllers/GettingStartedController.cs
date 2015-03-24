@@ -6,19 +6,13 @@ using System.Web.Mvc;
 
 namespace Leaf.Knockout.Controllers
 {
-    public class KnockoutController : Controller
+    public class GettingStartedController : Controller
     {
         //
-        // GET: /Knockout/
+        // GET: /GettingStarted/
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult Details()
-        {
-            return View();
-        }
-
 	}
 }

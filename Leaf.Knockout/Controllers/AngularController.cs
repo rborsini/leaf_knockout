@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace Leaf.Knockout.Controllers
 {
-    public class KnockoutController : Controller
+    public class AngularController : Controller
     {
         //
-        // GET: /Knockout/
+        // GET: /Angular/
         public ActionResult Index()
         {
             return View();
@@ -19,6 +21,5 @@ namespace Leaf.Knockout.Controllers
         {
             return View();
         }
-
-	}
+    }
 }
