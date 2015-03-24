@@ -37,6 +37,10 @@ namespace Leaf.Knockout
             bundles.Add(new ScriptBundle("~/bundles/knockout_components").Include(
                       "~/Scripts/ko.components.js"));
 
+            // angular
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular.min.js"));
+
             // gettingStarted page
             bundles.Add(new ScriptBundle("~/bundles/gettingStarted").Include(
                       "~/Scripts/gettingStarted.js"));
