@@ -4,23 +4,44 @@
 }
 
 
-
-<h2>Angular - Plants</h2>
-
 <div ng-app="leaf" ng-controller="monitorCtrl">
-    
-    <ul>
-        <li ng-repeat="item in items">
-            <span>{{item.Name}}</span>
-            <p>{{item.Type}}</p>
-        </li>
-    </ul>
+    <h2>Angular - Plants</h2>
+
+    <div class="row">
+
+        Search:
+        <input type="text" ng-model="filter" />
+
+        <input type="button" class="pull-right margin-left-20" name="wiew-toggle" id="wiew-toggle" value="Toggle Grid" />
+
+        <div class="btn-group pull-right" data-toggle="buttons">
+            <label id="photovoltaic_type" class="btn btn-primary" ng-click="isPV = !isPV">
+                <input type="checkbox" class="search-toggle"> Photovoltaic
+            </label>
+            <label id="hydroelectric_type" class="btn btn-primary" ng-click="isHydro = !isHydro">
+                <input type="checkbox" class="search-toggle" autocomplete="off" ng-model="isHydro"> Hydroelectric
+            </label>
+        </div>
+
+
+
+    </div>
+    <div>
+
+        <ul>
+            <li ng-repeat="item in items | filter: {Name: filter} | filter: filterByTypology">
+                <a href="/Angular/Details?id={{item.Id}}">
+                    <span>{{item.Name}}</span>
+                    <p>{{item.Type}}</p>
+                </a>
+            </li>
+        </ul>
+
+    </div>
 
 </div>
-
-
-@section scripts
+    @section scripts
 {
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/angular/overview")
-}
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/angular/overview")
+    }
