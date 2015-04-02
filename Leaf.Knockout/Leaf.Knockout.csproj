@@ -209,6 +209,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\exporting.js" />
     <Content Include="Scripts\gettingStarted.js" />
+    <Content Include="Scripts\highcharts-ng.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -965,6 +966,8 @@
     <Content Include="Scripts\knockout\overview.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Templates\grid-item.html" />
+    <Content Include="Templates\list-item.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

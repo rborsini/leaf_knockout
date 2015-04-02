@@ -22,7 +22,8 @@ namespace Leaf.Knockout
 
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
                       "~/Scripts/highcharts.js",
-                      "~/Scripts/exporting.js"));
+                      "~/Scripts/exporting.js",
+                      "~/Scripts/highcharts-ng.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

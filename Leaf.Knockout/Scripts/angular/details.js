@@ -1,70 +1,39 @@
-﻿var details = function () {
+﻿var app = angular.module('leaf', ["highcharts-ng"]);
 
-    var viewModel = null;
-    var chart = null;
-    var emptyModel = {
-        Name: '-',
-        Power: '-',
-        Energy: '-',
-        Values: new Array()
-    };
+app.controller('detailsCtrl', function ($scope, $interval, $http, $location) {
 
-    return {
-        init: function (url, divId) {
+    var id = $location.search()['id'];
 
-            // chart init
-            chart = initHighcharts();
+    $scope.Name = '';
+    $scope.Power = '';
+    $scope.Energy = '';
 
-            // create view model
-            viewModel = ko.mapping.fromJS(emptyModel);
+    $interval(function () {
+        refresh();
+    }, 3000);
 
-            // subscribe values changes for update chart
-            viewModel.Values.subscribe(refreshChart, null, 'change');
+    function refresh() {
+        $http.get('http://localhost:49299/api/monitor/' + id)
+        .success(function (response) {
 
-            // binding viewmodel and html
-            ko.applyBindings(viewModel, $(divId).get(0));
+            $scope.Name = response.Name;
+            $scope.Power = response.Power + ' kW';
+            $scope.Energy = response.Energy + ' kWh';
 
-            // first ajax request
-            ajaxRequest(url, divId);
+            $scope.highchartsNG.series[0].data = response.Values;
 
-            // automatic refresh
-            setInterval(function () {
-                ajaxRequest(url, divId);
-            }, 3013);
-
-        }
-    };
-
-    // Update chart values
-    function refreshChart(newValues) {
-        chart.series[0].setData(newValues);
-    }
-
-    // Details http request
-    function ajaxRequest(url, divId) {
-
-        $.ajax({
-            type: "GET",
-            url: url,
-            dataType: 'json',
-            success: function (result) {
-                ko.mapping.fromJS(result, viewModel);
-            }
         });
     }
 
-    // Chart initialization
-    function initHighcharts() {
-        
-        return new Highcharts.Chart({
-            chart: {
-                renderTo: 'chart'
-            },
-            series: [{
-                data: {}
-            }]
-        })
+    $scope.options = {
+        type: 'line'
+    }
 
-    };
+    $scope.highchartsNG = {
+        series: [{
+            data: []
+        }],
+        loading: false
+    }
 
-}();
+});

@@ -6,6 +6,8 @@ app.controller('monitorCtrl', function ($scope, $http) {
         $scope.items = response;
     });
 
+    $scope.isToggle = false;
+
     $scope.filterByTypology = function (element) {
         if ($scope.isPV == $scope.isHydro ||
             ($scope.isPV && element.Type == 'Photovoltaic') ||
@@ -14,4 +16,13 @@ app.controller('monitorCtrl', function ($scope, $http) {
         }
         return false;
     };
+
+    $scope.toggle = function () {
+        $scope.isToggle = !$scope.isToggle;
+    };
+
+    $scope.getTemplate = function () {
+        return $scope.isToggle ? '../Templates/grid-item.html' : '../Templates/list-item.html';
+    }
+
 });

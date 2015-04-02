@@ -12,7 +12,7 @@
         Search:
         <input type="text" ng-model="filter" />
 
-        <input type="button" class="pull-right margin-left-20" name="wiew-toggle" id="wiew-toggle" value="Toggle Grid" />
+        <input type="button" class="pull-right margin-left-20" name="wiew-toggle" id="wiew-toggle" ng-click="toggle()" value="Toggle Grid" />
 
         <div class="btn-group pull-right" data-toggle="buttons">
             <label id="photovoltaic_type" class="btn btn-primary" ng-click="isPV = !isPV">
@@ -30,10 +30,9 @@
 
         <ul>
             <li ng-repeat="item in items | filter: {Name: filter} | filter: filterByTypology">
-                <a href="/Angular/Details?id={{item.Id}}">
-                    <span>{{item.Name}}</span>
-                    <p>{{item.Type}}</p>
-                </a>
+                
+                <div ng-include="getTemplate()"></div>
+
             </li>
         </ul>
 

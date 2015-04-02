@@ -5,28 +5,22 @@
 }
 
 
+<div ng-app="leaf" ng-controller="detailsCtrl">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div id="knockout-container">
+        <p><b>Name: </b>{{Name}}</p>
+        <p><b>Power: </b>{{Power}}</p>
+        <p><b>Energy: </b>{{Energy}}</p>
+    </div>
 
-<div id="knockout-container">
-    <p><b>Name: </b><span data-bind="text: Name"></span></p>
-    <p><b>Power: </b><span data-bind="text: Power"></span></p>
-    <p><b>Energy: </b><span data-bind="text: Energy"></span></p>
+    <highchart id="chart1" config="highchartsNG"></highchart>
 </div>
 
-<div id="chart" style="min-width:310px; height:400px; margin:0 auto" >
-
-</div>
 
 @section scripts
 {
       @Scripts.Render("~/bundles/angular")
       @Scripts.Render("~/bundles/highcharts")   
-      @Scripts.Render("~/bundles/details")
-}
-
-@section ready
-{
-      var url='/api/monitorapi/' + '@Request["id"]' ;
-      details.init(url, '#knockout-container');
+      @Scripts.Render("~/bundles/angular/details")
 }
