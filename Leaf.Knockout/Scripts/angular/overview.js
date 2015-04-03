@@ -25,4 +25,9 @@ app.controller('monitorCtrl', function ($scope, $http) {
         return $scope.isToggle ? '../Templates/grid-item.html' : '../Templates/list-item.html';
     }
 
+    $scope.getTypeClass = function (type) {
+        var t = type;
+        return type == 'Photovoltaic' ? 'glyphicon-certificate' : 'glyphicon-tint';
+    }
+
 });

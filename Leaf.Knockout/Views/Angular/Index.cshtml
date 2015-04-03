@@ -26,21 +26,13 @@
 
 
     </div>
-    <div>
-
-        <ul>
-            <li ng-repeat="item in items | filter: {Name: filter} | filter: filterByTypology">
-                
-                <div ng-include="getTemplate()"></div>
-
-            </li>
-        </ul>
-
+    <div class="row padding-top-30 ">
+        <div ng-include="getTemplate()"></div>
     </div>
 
 </div>
-    @section scripts
+@section scripts
 {
-        @Scripts.Render("~/bundles/angular")
-        @Scripts.Render("~/bundles/angular/overview")
-    }
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular/overview")
+}

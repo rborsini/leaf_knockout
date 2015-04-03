@@ -7,7 +7,7 @@ app.controller('detailsCtrl', function ($scope, $interval, $http, $location) {
     $scope.Name = '';
     $scope.Power = '';
     $scope.Energy = '';
-
+    refresh();
     $interval(function () {
         refresh();
     }, 3000);
@@ -25,9 +25,6 @@ app.controller('detailsCtrl', function ($scope, $interval, $http, $location) {
         });
     }
 
-    $scope.options = {
-        type: 'line'
-    }
 
     $scope.highchartsNG = {
         series: [{

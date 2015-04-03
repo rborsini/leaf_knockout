@@ -1,5 +1,11 @@
-﻿<a href="/Angular/Details#?id={{item.Id}}">
-    <span>LIST</span>
-    <span>{{item.Name}}</span>
-    <p>{{item.Type}}</p>
-</a>
+﻿<div class="media" ng-repeat="item in items | filter: {Name: filter} | filter: filterByTypology">
+    <div class="media-left">
+        <a href="/Angular/Details#?id={{item.Id}}">
+            <div><span ng-class="getTypeClass(item.Type)" class="glyphicon" aria-hidden="true"></span></div>
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{item.Name}}</h4>
+        (<span class="text-danger">{{item.Type}}</span>)
+    </div>
+</div>

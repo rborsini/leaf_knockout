@@ -1,5 +1,14 @@
-﻿<a href="/Angular/Details#?id={{item.Id}}">
-    <span>GRID</span>
-    <span>{{item.Name}}</span>
-    <p>{{item.Type}}</p>
+﻿<a href="/Angular/Details#?id={{item.Id}}" ng-repeat="item in items | filter: {Name: filter} | filter: filterByTypology">
+    <div class="col-md-4 col-sm-12">
+        <div class=" panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span>{{item.Name}}</span> (<span class="text-danger">{{item.Type}}</span>)
+                </h3>
+            </div>
+            <div class="panel-body text-center">
+                <h1 ng-class="getTypeClass(item.Type)" class="glyphicon" aria-hidden="true"></h1>
+            </div>
+        </div>
+    </div>
 </a>
