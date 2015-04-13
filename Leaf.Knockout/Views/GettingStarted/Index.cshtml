@@ -63,7 +63,7 @@
 
 <div id="step_3" class="row">
 
-    <table class="col-xs-12" >
+    <table class="col-xs-12">
         <thead>
             <tr><th>First name</th><th>Last name</th></tr>
         </thead>
@@ -88,9 +88,19 @@
             <!-- /ko -->
         </tbody>
     </table>
+</div>
+
+<div id="step_4" class="row">
+    <h3>Templating</h3>
+    <div class="col-xs-12 padding-top-15" data-bind="template: { name: 'people-list', data: people }"></div>
 
 </div>
 
+<script type="text/html" id="people-list">
+    <ul data-bind="foreach: $data">
+        <li><span data-bind="text: firstName"></span><span data-bind="text: lastName"></span></li>
+    </ul>
+</script>
 
 @section scripts
 {
@@ -103,4 +113,5 @@
     step_1();
     step_2();
     step_3();
+    step_4();
 }

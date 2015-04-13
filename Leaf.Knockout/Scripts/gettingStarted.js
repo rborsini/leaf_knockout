@@ -37,3 +37,16 @@ var step_3 = function () {
     ko.applyBindings({ people: people }, $('#step_3')[0]);
 
 };
+
+// Step 4 - Templating
+var step_4 = function () {
+
+    var people = [
+            { firstName: 'Bobbe', lastName: 'Malle' },
+            { firstName: 'Smazzo', lastName: 'Gaio' },
+            { firstName: 'Pool', lastName: 'Santi' }
+    ];
+
+    ko.applyBindings({ people: people }, $('#step_4')[0]);
+
+};
