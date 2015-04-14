@@ -50,3 +50,16 @@ var step_4 = function () {
     ko.applyBindings({ people: people }, $('#step_4')[0]);
 
 };
+
+// Step 5 - Components
+var step_5 = function () {
+
+    var people = [
+            { firstName: 'Bobbe', lastName: 'Malle' },
+            { firstName: 'Smazzo', lastName: 'Gaio' },
+            { firstName: 'Pool', lastName: 'Santi' }
+    ];
+
+    ko.applyBindings({ people: people }, $('#step_5')[0]);
+
+};

@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Konckout - Getting started</h2>
+<h2>Knockout - Getting started</h2>
 
 
 <h3>One way binding</h3>
@@ -90,21 +90,28 @@
     </table>
 </div>
 
+<h3>Templating</h3>
+
 <div id="step_4" class="row">
-    <h3>Templating</h3>
     <div class="col-xs-12 padding-top-15" data-bind="template: { name: 'people-list', data: people }"></div>
-
 </div>
-
+<!-- Template -->
 <script type="text/html" id="people-list">
     <ul data-bind="foreach: $data">
         <li><span data-bind="text: firstName"></span><span data-bind="text: lastName"></span></li>
     </ul>
 </script>
 
+<h3>Components</h3>
+<div id="step_5" class="row">
+    <div data-bind="foreach: people">
+        <loccioni-pipol params="value: $data"></loccioni-pipol>
+    </div>
+</div>
 @section scripts
 {
     @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/knockout_components")
     @Scripts.Render("~/bundles/gettingStarted")
 }
 
@@ -114,4 +121,5 @@
     step_2();
     step_3();
     step_4();
+    step_5();
 }
